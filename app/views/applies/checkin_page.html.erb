@@ -12,11 +12,12 @@
 
 
 <div>
-  <form action=''>
-    <input type='text' >
+  <form id = 'search_and_checkin'>
+    <input type='text' id = 'keyword'>
   </form>
 </div>
 
+<h1><%= Activity.find(params[:id]).title unless params[:id].nil? %></h1>
 <div id = 'applies'>
   <%= render "shared/applies" %>
 </div>

@@ -3,6 +3,16 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
     
+  def search_apply(applies, key)
+    result = []
+    applies.each do |apply|
+      if apply.realname.index(key) == 0 || apply.mobile.index(key) ==0 || apply.email.index(key)==0
+        result << apply
+      end
+    end
+    result
+  end
+
   def activities_url
     Settings.get_activities_url + '?token=' + Settings.token
   end

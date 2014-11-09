@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   match '/import', to: 'applies#import', via: :get
  
   match '/cancel', to: 'applies#cancel', via: :get
+
+  match '/search', to: 'applies#search', via: :get
+
+  match '/prepare', to: 'applies#prepare', via: :get 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
