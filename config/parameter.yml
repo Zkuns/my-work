@@ -1,0 +1,12 @@
+defaults: &defaults
+  get_activities_url: 'http://www.geekpark.net/api/v1/activities'
+  get_applies_url: 'http://www.geekpark.net/api/v1/applies'
+  token: '4cv4042559479932'
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

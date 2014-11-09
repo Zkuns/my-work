@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   match '/login', to: 'sessions#new', via: :get, as: 'login'
 
   resources :sessions, only: [:create]
+
+  match '/save', to: 'activities#save', via: :get
+
+  match '/import', to: 'applies#import', via: :get
+ 
+  match '/cancel', to: 'applies#cancel', via: :get
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108043853) do
+ActiveRecord::Schema.define(version: 20141109012023) do
+
+  create_table "activities", force: true do |t|
+    t.string   "title"
+    t.boolean  "actived",    default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "applies", force: true do |t|
+    t.string   "realname"
+    t.string   "mobile"
+    t.string   "email"
+    t.string   "company"
+    t.string   "position"
+    t.integer  "status",      limit: 255
+    t.boolean  "checkin"
+    t.string   "qrcode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "activity_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "username"

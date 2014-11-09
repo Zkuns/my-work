@@ -1,5 +1,9 @@
 module AppliesHelper
 
+  def activities_url
+    Settings.get_activities_url + '?token=' + Settings.token
+  end
+  
   def current_user=(user)
     @current_user = user
   end

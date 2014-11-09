@@ -1,1 +1,22 @@
-<h1>hello world</h1>
+<div id = 'get_data'>
+  <%= link_to '获得最新活动', 'javascript:void(0)', data:{url: activities_url}%>
+</div>
+  <table id = 'activities'>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td><%= link_to activity.title, "/?id=#{activity.id}" %></td>
+        <td><%= link_to '更新数据', "/import?id=#{activity.id}", remote: true %></td>
+      </tr>
+    <% end %>
+  </table>
+
+
+<div>
+  <form action=''>
+    <input type='text' >
+  </form>
+</div>
+
+<div id = 'applies'>
+  <%= render "shared/applies" %>
+</div>

@@ -29,6 +29,8 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass', '~>3.2.0'
 
 gem 'settingslogic'
+gem 'handlebars_assets'
+
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
