@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
   match '/search', to: 'applies#search', via: :get
 
-  match '/prepare', to: 'applies#prepare', via: :get 
+  match '/prepare', to: 'applies#prepare', via: :get
+
+  match '/uptoserver', to: 'applies#uptoserver', via: :get 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

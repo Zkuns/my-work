@@ -1,6 +1,12 @@
 class AppliesController < ApplicationController
   before_action :check_login
 
+  def uptoserver
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def checkin_page
     @activities = Activity.all.order(:created_at)
     @activities.each{ |activity| activity.update_attribute(:actived, false) }

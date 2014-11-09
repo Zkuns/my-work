@@ -6,6 +6,7 @@
       <tr>
         <td><%= link_to activity.title, "/?id=#{activity.id}" %></td>
         <td><%= link_to '更新数据', "/import?id=#{activity.id}", remote: true %></td>
+        <td><%= link_to '上传数据', "/uptoserver?id=#{activity}",remote: true%></td>
       </tr>
     <% end %>
   </table>
