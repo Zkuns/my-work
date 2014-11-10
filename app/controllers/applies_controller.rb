@@ -2,6 +2,10 @@ class AppliesController < ApplicationController
   before_action :check_login
 
   def uptoserver
+    activity_id = Activity.find_by(actived: true).id
+    @url = applies_url(activity_id.to_s)
+    applies = Apply.where('activity_id = ? and checkin = ?', activity_id, true).order(updated_at: :desc)
+    @data = applies.map( &:email ).to_json
     respond_to do |format|
       format.js
     end
@@ -51,8 +55,7 @@ class AppliesController < ApplicationController
       data.each do |applies|
         applies[:activity_id] = params[:id]
       end
-      applies = Apply.find_by(:activity, params[:id])
-      applies.delete unless applies.nil?
+      Apply.delete_all(activity_id: params[:id])
       Apply.create(data)
     end
     respond_to do |format|

@@ -22,6 +22,10 @@ class ApplicationController < ActionController::Base
     Settings.get_applies_url + '/' + activity_id + '?token=' + Settings.token
   end
 
+  def uptoserver activity_id
+    # Settings.get
+  end
+
   def sign_in(user)
     token = User.new_token
     current_user = user
