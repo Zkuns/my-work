@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108043853) do
+ActiveRecord::Schema.define(version: 20141129162145) do
+
+  create_table "items", force: true do |t|
+    t.datetime "time"
+    t.string   "internumber"
+    t.integer  "usernumber"
+    t.integer  "yidong"
+    t.integer  "liantong"
+    t.integer  "dianxing"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "username"
