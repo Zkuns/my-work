@@ -14,4 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require handlebars
+//= require bootstrap-datepicker
 //= require_tree .
+
+$(function(){
+  $('.tet').datepicker({
+    
+  })
+})
