@@ -2,16 +2,28 @@ div class='all-form'
   =form_for @user, url: user_path do |f|
     .form-group
       .h1
-       =@user.username
+        |用户名:
+        =@user.username
     / # -unless current_user.admin?
     / #     .form-group
     / #       =f.label 'password'
     / #       =password_field_tag :old_password, nil, class: 'form-control'
     .form-group
-      =f.label 'new_password'
+      / =f.label ('管理员?：' + (@user.admin?? '是' : '否'))
+      / br
+      / |修改？
+      |管理员？
+      br
+      |是
+      =f.radio_button :admin,true
+      |否
+      =f.radio_button :admin,false
+
+    .form-group
+      =f.label '新密码'
       =f.password_field :password, class: 'form-control'
 
     .form-group
-      =f.label 'new_password_confirme'
+      =f.label '新密码确认'
       =f.password_field :password_confirmation, class: 'form-control'
     =f.submit '修改', class:'btn btn-default'
