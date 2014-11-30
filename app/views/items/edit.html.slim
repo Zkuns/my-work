@@ -1,13 +1,12 @@
 div class='all-form'
   =render 'shared/message'
-  -if @user.errors.any?
+  -if @item.errors.any?
   #error_explanation
-    / .alert.alert-error
     ul
-     @user.errors.full_messages.each do |msg|
+     -@item.errors.full_messages.each do |msg|
        li
         = msg
-  =form_for @item, url: items_path do |f|
+  =form_for @item, url: item_path do |f|
     .form-group
       =f.label '时间'
       =f.text_field :time, class: 'form-control datepicker', value: "#{@item.time}"

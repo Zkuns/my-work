@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item)
+    params.require(:item).permit(:time,:internumber,:usernumber,:yidong,:liantong,:dianxing,:signupnumber)
   end
 
 end

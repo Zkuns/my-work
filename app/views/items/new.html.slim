@@ -1,22 +1,21 @@
 div class='all-form'
   =render 'shared/message'
-  -if @user.errors.any?
+  -if @item.errors.any?
     #error_explanation
-      / .alert.alert-error
       ul
-       @user.errors.full_messages.each do |msg|
+       -@item.errors.full_messages.each do |msg|
          li
           = msg
   =form_for @item, url: items_path do |f|
     .form-group
       =f.label '时间'
-      =f.text_field :time, class: 'form-control datepicker'
+      =f.text_field :time, class: 'form-control', id: 'select'
     .form-group
       =f.label '渠道号'
       |c10001
-      =f.radio_button :internumber, value: 'c10001', class: 'form-control', checked: 'true'
+      =f.radio_button :internumber,'c10001'
       |c10002
-      =f.radio_button :internumber, value: 'c10002',class: 'form-control'
+      =f.radio_button :internumber, 'c10002'
     .form-group
       =f.label '注册用户数'
       =f.text_field :signupnumber, class: 'form-control'

@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
-  skip_before_action :must_login_in, only: [:new, :create]
-  skip_before_action :must_admin, only: [:new, :create]
+  skip_before_action :must_login_in
+  skip_before_action :must_admin
   def new
     @user = User.new
   end
@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
   def destroy
     session[:id] = nil
     cookies[:remember_token] = nil
+    puts "---------------------------"
     redirect_to root_path
   end
 

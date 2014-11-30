@@ -1,6 +1,14 @@
 =render 'shared/message'
-input.datepicker type='text'
-input.datepicker type='text'
+.month-picker
+  |月份选择
+  input#select-month type='text'
+.range
+  |按时间查找
+  .input-daterange.input-group#range
+      input.form-control type="text" name="start"
+      span class="input-group-addon"
+        |到
+      input.form-control type="text" name="end"
 -if current_user.admin?
   =link_to '添加', new_item_path
 table.table
