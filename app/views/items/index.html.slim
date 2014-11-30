@@ -46,7 +46,7 @@ table.table
           td
             =link_to '修改', edit_item_path(item)
             |&nbsp;
-            =link_to '删除', item, method: :delete
+            =link_to '删除', item, method: :delete, data: { confirm: 'Are you sure?' }
   tr
     td
       |合计

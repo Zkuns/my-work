@@ -2,3 +2,20 @@
 -if current_user.admin?
   =link_to '添加', new_item_path
 table.table
+  tr
+    td
+      |用户名
+    td
+      |管理员？
+    td
+      |操作
+  - @users.each do |user|
+    tr
+      td
+        =user.username
+      td
+        =user.admin?? '是' : '不是'
+      td
+        =link_to '修改', edit_user_path(user)
+        |&nbsp;
+        =link_to '删除', user, method: :delete, data: { confirm: 'Are you sure?' }

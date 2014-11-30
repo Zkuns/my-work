@@ -11,11 +11,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:] = '添加成功'
+      flash[:success] = '添加成功'
       redirect_to users
     else
       flash.now[:danger] = '添加失败'
       render :new
+    end
   end
   
   def edit
