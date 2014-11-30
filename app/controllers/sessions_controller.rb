@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       @user.update_attribute(:remember_token, SecureRandom.urlsafe_base64)
       session[:id] = @user.id
       cookies[:remember_token] = @user.remember_token
-      redirect_to 
+      redirect_to  items_path
     else
       @user = User.new(username: user_params[:username])
       flash.now[:danger] = '账号密码错误，请联系管理员'
@@ -32,6 +32,6 @@ class SessionsController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:username, :password)
   end
 end

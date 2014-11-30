@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129162145) do
+ActiveRecord::Schema.define(version: 20141130013532) do
 
   create_table "items", force: true do |t|
     t.datetime "time"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20141129162145) do
     t.integer  "dianxing"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "signupnumber"
   end
 
   create_table "users", force: true do |t|

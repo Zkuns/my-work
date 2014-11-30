@@ -1,0 +1,28 @@
+html body{
+  min-height: 100%;
+}
+//头部
+.navbar-header {
+  img{
+    width: 60px;
+    height: 60px;
+  }
+}
+//尾部
+.footer {
+  margin-top: -60px;
+  background: #fff;
+  box-shadow: none;
+}
+//主要页面
+.main {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 120px;
+  min-height: 100%;
+  padding-bottom: 60px;
+}
+.all-form {
+  width: 600px;
+  margin: 0 auto;
+}

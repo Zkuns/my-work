@@ -1,0 +1,67 @@
+=render 'shared/message'
+input type='text'
+input type='text'
+-if current_user.admin?
+  =link_to '添加', new_item_path
+table.table
+  tr
+    td
+      |日期
+    td
+      |渠道号
+    td
+      |注册用户数
+    td
+      |充值用户数
+    -if current_user.admin?
+      td
+        |移动金额
+      td
+        |联通金额
+      td
+        |电信金额
+      td
+        |合计金额
+      td
+        |操作
+    -@items.each do |item|
+      tr
+        td
+          = item.time
+        td
+          = item.internumber
+        td
+          = item.signupnumber
+        td
+          = item.usernumber
+        -if current_user.admin?
+          td
+            = item.yidong
+          td
+            = item.liantong
+          td
+            = item.dianxing
+          td
+            = item.yidong+item.liantong+item.dianxing
+          td
+            =link_to '修改', edit_item_path(item)
+            |&nbsp;
+            =link_to '删除', item, method: :delete
+  tr
+    td
+      |合计
+    td
+
+    td
+      =@items.sum(:signupnumber)
+    td
+      =@items.sum(:usernumber)
+    -if current_user.admin?
+      td
+        =@items.sum(:yidong)
+      td
+        =@items.sum(:liantong)
+      td
+        =@items.sum(:dianxing)
+      td
+        =@items.sum(:yidong)+@items.sum(:liantong)+@items.sum(:dianxing)

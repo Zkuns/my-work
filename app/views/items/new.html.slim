@@ -1,0 +1,27 @@
+div class='all-form'
+  =form_for @item, url: items_path do |f|
+    .form-group
+      =f.label '时间'
+      =f.text_field :time, class: 'form-control datepicker'
+    .form-group
+      =f.label '渠道号'
+      |c10001
+      =f.radio_button :internumber, value: 'c10001', class: 'form-control', checked: 'true'
+      |c10002
+      =f.radio_button :internumber, value: 'c10002',class: 'form-control'
+    .form-group
+      =f.label '注册用户数'
+      =f.text_field :signupnumber, class: 'form-control'
+    .form-group
+      =f.label '充值用户数'
+      =f.text_field :usernumber, class: 'form-control'
+    .form-group
+      =f.label '移动金额'
+      =f.text_field :yidong, class: 'form-control'
+    .form-group
+      =f.label '联通金额'
+      =f.text_field :liantong, class: 'form-control'
+    .form-group
+      =f.label '电信金额'
+      =f.text_field :dianxing, class: 'form-control'
+    =f.submit '添加', class:'btn btn-default'

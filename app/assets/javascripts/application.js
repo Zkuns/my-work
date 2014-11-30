@@ -14,11 +14,12 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require handlebars
+//= require bootstrap
 //= require bootstrap-datepicker
 //= require_tree .
 
-$(function(){
-  $('.tet').datepicker({
+$(document).on("page:change", function(){
+  $('#item_time').datepicker({
     
   })
 })
