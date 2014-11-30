@@ -19,7 +19,7 @@
 //= require_tree .
 
 $(document).on("page:change", function(){
-  $('#item_time').datepicker({
+  $('.datepicker').datepicker({
     
   })
 })

@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
 
   def destroy
     Item.delete(params[:id]) if params[:id]
-    redirect_to index
+    redirect_to items_path
   end
 
   private

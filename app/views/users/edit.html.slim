@@ -1,0 +1,17 @@
+div class='all-form'
+  =form_for @user, url: user_path do |f|
+    .form-group
+      .h1
+       =@user.username
+    / # -unless current_user.admin?
+    / #     .form-group
+    / #       =f.label 'password'
+    / #       =password_field_tag :old_password, nil, class: 'form-control'
+    .form-group
+      =f.label 'new_password'
+      =f.password_field :password, class: 'form-control'
+
+    .form-group
+      =f.label 'new_password_confirme'
+      =f.password_field :password_confirmation, class: 'form-control'
+    =f.submit '修改', class:'btn btn-default'

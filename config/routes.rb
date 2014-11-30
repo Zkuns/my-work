@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :sessions
+  resources :sessions, except: [:show, :edit, :update]
   root 'sessions#new'
   resources :items, except: :show
   resources :users, except: :show
