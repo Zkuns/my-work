@@ -22,7 +22,6 @@ class SessionsController < ApplicationController
   def destroy
     session[:id] = nil
     cookies[:remember_token] = nil
-    puts "---------------------------"
     redirect_to root_path
   end
 
