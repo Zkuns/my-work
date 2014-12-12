@@ -1,0 +1,22 @@
+=render 'shared/message'
+=link_to '添加', new_company_path
+table.table
+  tr
+    td
+      |公司名
+    td
+      |管理
+    td
+      |操作
+  -@coms.each do |com|
+    tr
+      td
+        =com.name
+      td
+        =link_to '帐号管理', company_users_path(com)
+        |&nbsp;
+        =link_to '数据管理', company_items_path(com)
+      td
+        =link_to '修改', edit_company_path(com)
+        |&nbsp;
+        =link_to '删除', com, method: :delete, data: { confirm: 'Are you sure?' }

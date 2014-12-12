@@ -5,17 +5,17 @@ nav.navbar.navbar-default.navbar-fixed-top
        -if current_user.admin?
         ul.nav.navbar-nav
           li
-            =link_to '帐号管理', users_path
-          li
-            =link_to '数据管理', items_path
+            =link_to '合作公司管理' , companies_path
+          li.welcome
+            =link_to "欢迎#{current_user.name}", 'javascript:void(0);'
        ul.nav.navbar-nav.navbar-right
         li.dropdown
           a.dropdown-toggle data-toggle='dropdown' href='#'
-            | zk
+            =current_user.name
             span.caret
           ul.dropdown-menu role='menu'
             -if current_user.admin?
               li
-                =link_to '修改密码', edit_user_path(current_user)
+                =link_to '修改密码', "/companies/#{current_user.company.id}/users/#{current_user.id}/edit"
             li
               =link_to '注销用户', session_path(current_user), method: :delete

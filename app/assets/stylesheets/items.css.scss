@@ -4,3 +4,9 @@
 .range{
   width:400px;
 }
+ul.nav li.welcome a{
+  color: rgb(35, 102, 245);
+  &:hover,&:visited,&:link,&:active{
+    color: rgb(35, 102, 245);
+  }
+}

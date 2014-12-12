@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
   resources :sessions, except: [:show, :edit, :update]
   root 'sessions#new'
-  resources :items, except: :show
-  resources :users, except: :show
+  #resources :items, except: :show
+  resources :users
+  resources :companies do
+    resources :items, except: :show
+  end
+  resources :companies do
+    resources :users, except: :show
+  end
+  get 'companies/:company_id/users/:id/change', to:'users#change_coo'
+  post 'companies/:company_id/search', to:'items#search'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

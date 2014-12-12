@@ -6,10 +6,16 @@ div class='all-form'
         -@user.errors.full_messages.each do |msg|
           li
            = msg
-  =form_for @user, url: users_path do |f|
+  =form_for @user, url: company_users_path(@com) do |f|
     .form-group
       =f.label '用户名'
       =f.text_field :username, class: 'form-control'
+    .form-group
+      =f.label '公司名'
+      =f.text_field :company_name, class: 'form-control'
+    .form-group
+      =f.label '姓名'
+      =f.text_field :name, class: 'form-control'
     .form-group
       =f.label '密码'
       =f.password_field :password, class: 'form-control'
@@ -17,9 +23,19 @@ div class='all-form'
       =f.label '密码确认'
       =f.password_field :password_confirmation, class: 'form-control'
     .form-group
-      =f.label '是否为管理员'
+      =f.label '是否为管理员:'
+      |&nbsp;&nbsp;
       |是
       =f.radio_button :admin,true
+      |&nbsp;&nbsp;
       |否
       =f.radio_button :admin,false
+    .form-group
+      =f.label '合作模式:'
+      |&nbsp;&nbsp;
+      |Vip
+      =f.radio_button :coo_type,false
+      |&nbsp;&nbsp;
+      |Not Vip
+      =f.radio_button :coo_type,true
     =f.submit '添加', class:'btn btn-default'

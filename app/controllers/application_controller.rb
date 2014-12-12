@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def must_admin
-    redirect_to items_path unless current_user.admin
+    redirect_to company_items_path(current_user.company) unless current_user.admin
   end
 
   private
@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def from_cookies
-    User.find(cookies[:remember_token]) if cookies[:remember_token].present?
+    User.find_by(:remember_token, cookies[:remember_token]) if 
+      cookies[:remember_token].present?
   end
 end

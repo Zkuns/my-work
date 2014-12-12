@@ -1,5 +1,5 @@
 div class='all-form'
-  =form_for @user, url: user_path do |f|
+  =form_for @user, url: company_user_path(@com,@user) do |f|
     .form-group
       .h1
         |用户名:
@@ -19,6 +19,14 @@ div class='all-form'
       |否
       =f.radio_button :admin,false
 
+    .form-group
+      =f.label '姓名'
+      =f.text_field :name, class: 'form-control'
+
+    .form-group
+      =f.label '公司姓名'
+      =f.text_field :company_name, class: 'form-control'
+    
     .form-group
       =f.label '新密码'
       =f.password_field :password, class: 'form-control'

@@ -1,25 +1,37 @@
 =render 'shared/message'
 -if current_user.admin?
-  =link_to '添加', new_user_path
+  =link_to '添加', new_company_user_path(@com)
 table.table
   tr
+    td
+      |姓名
     td
       |用户名
     td
       |密码
     td
+      |公司姓名
+    td
+      |合作模式
+    td
       |管理员？
     td
       |操作
-  - @users.each do |user|
+  -@users.each do |user|
     tr
+      td
+        =user.name
       td
         =user.username
       td
         =user.password
       td
-        =user.admin?? '是' : '不是'
+        =user.company_name
+      td data-url="users/#{user.id}/change"
+        button.btn.btn-default.change-coo = user.coo_type ? 'vip' : 'not vip'
       td
-        =link_to '修改', edit_user_path(user)
+        =user.admin? ? '是' : '不是'
+      td
+        =link_to '修改', edit_company_user_path(@com,user)
         |&nbsp;
         =link_to '删除', user, method: :delete, data: { confirm: 'Are you sure?' }

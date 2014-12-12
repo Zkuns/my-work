@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
-  skip_before_action :must_login_in
+  skip_before_action :must_login_in, only: [:new, :create]
   skip_before_action :must_admin
+  before_action :must_not_login_in, only: [:new, :create]
+  
   def new
     @user = User.new
   end
@@ -11,7 +13,8 @@ class SessionsController < ApplicationController
       @user.update_attribute(:remember_token, SecureRandom.urlsafe_base64)
       session[:id] = @user.id
       cookies[:remember_token] = @user.remember_token
-      redirect_to  items_path
+      @com = @user.company
+      @user.admin? ? (redirect_to companies_path) : (redirect_to  company_items_path(@com))
     else
       @user = User.new(username: user_params[:username])
       flash.now[:danger] = '账号密码错误，请联系管理员'
@@ -28,7 +31,7 @@ class SessionsController < ApplicationController
   private
 
   def must_not_login_in
-    redirect_to admin_root_path if current_admin
+    redirect_to company_items_path(current_user.company) if current_user
   end
 
   def user_params

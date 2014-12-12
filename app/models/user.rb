@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: { case_sensitive: false}
-
+  belongs_to :company
+  
   def authenticate password
     password == self.password
   end

@@ -6,7 +6,7 @@ div class='all-form'
      -@item.errors.full_messages.each do |msg|
        li
         = msg
-  =form_for @item, url: item_path do |f|
+  =form_for @item, url: company_item_path(@com, @item) do |f|
     .form-group
       =f.label '时间'
       =f.text_field :time, class: 'form-control datepicker', value: "#{@item.time}"
@@ -15,9 +15,9 @@ div class='all-form'
       =f.label @item.internumber
       br
       |c10001
-      =f.radio_button :internumber, value: 'c10001', class: 'form-control'
+      =f.radio_button :internumber, 'c10001'
       |c10002
-      =f.radio_button :internumber, value: 'c10002',class: 'form-control'
+      =f.radio_button :internumber, 'c10002'
     .form-group
       =f.label '注册用户数'
       =f.text_field :signupnumber, class: 'form-control', value: "#{@item.signupnumber}"

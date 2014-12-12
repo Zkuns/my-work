@@ -1,16 +1,18 @@
 =render 'shared/message'
-.month-picker
-  |月份选择
-  input#select-month type='text'
-.range
-  |按时间查找
-  .input-daterange.input-group#range
-      input.form-control type="text" name="start"
-      span class="input-group-addon"
-        |到
-      input.form-control type="text" name="end"
+/ .month-picker
+/   |月份选择
+/   input#select-month type='text'
+=form_tag "/companies/#{@com.id}/search"
+  .range
+    |按时间查找
+    .input-daterange.input-group#range
+        input.form-control type="text" name="start"
+        span class="input-group-addon"
+          |到
+        input.form-control type="text" name="end"
+  =submit_tag '查找', class: 'btn btn-default'
 -if current_user.admin?
-  =link_to '添加', new_item_path
+  =link_to '添加', new_company_item_path
 table.table
   tr
     td
@@ -29,20 +31,20 @@ table.table
       td
         |电信金额
       td
-        |合计金额
+        |充值金额
       td
         |操作
     -@items.each do |item|
       tr
         td
-          = item.time
+          = item.time.strftime("%Y-%m-%d")
         td
           = item.internumber
         td
           = item.signupnumber
         td
           = item.usernumber
-        -if current_user.admin?
+        -if current_user.coo_type
           td
             = item.yidong
           td
@@ -51,10 +53,11 @@ table.table
             = item.dianxing
           td
             = item.yidong+item.liantong+item.dianxing
+        -if current_user.admin
           td
-            =link_to '修改', edit_item_path(item)
+            =link_to '修改', edit_company_item_path(@com, item)
             |&nbsp;
-            =link_to '删除', item, method: :delete, data: { confirm: 'Are you sure?' }
+            =link_to '删除', company_item_path(@com, item), method: :delete, data: { confirm: 'Are you sure?' }
   tr
     td
       |合计

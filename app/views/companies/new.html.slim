@@ -1,0 +1,8 @@
+div class='all-form'
+  = render 'shared/message'
+  = form_for @com, url: companies_path do |f|
+    .form-group
+      = f.label '公司名'
+      = f.text_field :name, class: 'form-control'
+    
+    = f.submit '添加', class:'btn btn-default'

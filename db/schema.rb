@@ -11,18 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204151722) do
+ActiveRecord::Schema.define(version: 20141212164749) do
+
+  create_table "companies", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "items", force: true do |t|
     t.datetime "time"
     t.string   "internumber"
-    t.integer  "usernumber"
-    t.integer  "yidong"
-    t.integer  "liantong"
-    t.integer  "dianxing"
+    t.integer  "usernumber",   default: 0
+    t.integer  "yidong",       default: 0
+    t.integer  "liantong",     default: 0
+    t.integer  "dianxing",     default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "signupnumber"
+    t.integer  "signupnumber", default: 0
+    t.integer  "company_id"
   end
 
   create_table "users", force: true do |t|
@@ -32,8 +39,10 @@ ActiveRecord::Schema.define(version: 20141204151722) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password"
-    t.string   "company"
     t.string   "name"
+    t.boolean  "coo_type"
+    t.integer  "company_id"
+    t.string   "company_name"
   end
 
 end
