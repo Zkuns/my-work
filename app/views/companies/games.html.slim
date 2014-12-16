@@ -1,0 +1,10 @@
+div class='all-form'
+  = render 'shared/message'
+  span 
+    = @games
+  = form_for @com ,url:"/companies/#{@com.id}/addgame" do |f|
+    .form-group
+      = f.label '新加合作游戏'
+      = f.text_field :coo_games, value:'', class: 'form-control'
+    
+    = f.submit '添加', class:'btn btn-default'

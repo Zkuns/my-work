@@ -1,5 +1,34 @@
 class CompaniesController < ApplicationController
   
+  def creategame
+    com = Company.find(params[:id])
+    games = com.coo_games || ''
+    if games == ''
+      games = games << com_params[:coo_games]
+    else
+      games = games << ',' + com_params[:coo_games]
+    end
+    com_params['coo_games'] = games
+    com.update(coo_games: games)
+    redirect_to companies_path
+  end
+
+  def update
+    @com = Company.find(params[:id])
+    if @com.update(com_params)
+      flash[:success] = '修改成功'
+      redirect_to companies_path
+    else
+      flash.now[:danger] = '修改失败,请重试'
+      render :edit
+    end
+  end
+
+  def games
+    @com = Company.find(params[:id])
+    @games = @com.coo_games || ''
+  end
+
   def index
     @coms = Company.all
   end
@@ -22,17 +51,6 @@ class CompaniesController < ApplicationController
   def edit
     @com = Company.find(params[:id])
   end
-  
-  def update
-    @com = Company.find(params[:id])
-    if @com.update(com_params)
-      flash[:success] = '修改成功'
-      redirect_to companies_path
-    else
-      flash.now[:danger] = '修改失败,请重试'
-      render :edit
-    end
-  end
 
   def destroy
     Company.destroy(Company.find(params[:id])) if params[:id]
@@ -42,6 +60,6 @@ class CompaniesController < ApplicationController
   private
 
   def com_params
-    params.require(:company).permit(:name)
+    params.require(:company).permit(:name,:coo_games)
   end
 end

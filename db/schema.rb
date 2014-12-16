@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141212164749) do
+ActiveRecord::Schema.define(version: 20141213154736) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "coo_games"
   end
 
   create_table "items", force: true do |t|
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 20141212164749) do
     t.datetime "updated_at"
     t.integer  "signupnumber", default: 0
     t.integer  "company_id"
+    t.string   "coo_game"
   end
 
   create_table "users", force: true do |t|

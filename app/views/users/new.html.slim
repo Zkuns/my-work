@@ -11,9 +11,6 @@ div class='all-form'
       =f.label '用户名'
       =f.text_field :username, class: 'form-control'
     .form-group
-      =f.label '公司名'
-      =f.text_field :company_name, class: 'form-control'
-    .form-group
       =f.label '姓名'
       =f.text_field :name, class: 'form-control'
     .form-group
@@ -33,9 +30,9 @@ div class='all-form'
     .form-group
       =f.label '合作模式:'
       |&nbsp;&nbsp;
-      |Vip
+      |CPS
       =f.radio_button :coo_type,false
       |&nbsp;&nbsp;
-      |Not Vip
+      |CPA
       =f.radio_button :coo_type,true
     =f.submit '添加', class:'btn btn-default'

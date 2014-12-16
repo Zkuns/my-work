@@ -5,17 +5,14 @@ div class='all-form'
       ul
        -@item.errors.full_messages.each do |msg|
          li
-          = msg
+          = msguxi
   =form_for @item, url: company_items_path(@com) do |f|
     .form-group
       =f.label '时间'
       =f.text_field :time, class: 'form-control', id: 'select'
     .form-group
-      =f.label '渠道号'
-      |c10001
-      =f.radio_button :internumber,'c10001'
-      |c10002
-      =f.radio_button :internumber, 'c10002'
+      =f.label '选择游戏类型:'
+      =f.select :coo_game, @games
     .form-group
       =f.label '注册用户数'
       =f.text_field :signupnumber, class: 'form-control'

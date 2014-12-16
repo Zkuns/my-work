@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   skip_before_action :must_admin, only: :index
   before_action :compare
+
   def index
     @com = Company.find(params[:company_id])
     @items = @com.items
@@ -9,15 +10,15 @@ class ItemsController < ApplicationController
   def new
     @com = Company.find(params[:company_id])
     @item = @com.items.new
+    @games = @com.coo_games.split(',')
   end
 
   def search
-      @com = Company.find(params[:company_id])
-      puts edit_time(params[:start])
-      time1 = edit_time(params[:start]) || Time.mktime('1971')
-      time2 = edit_time(params[:end]) || Time.mktime('2020')
-      @items = @com.items.where(time: time1..time2)
-      render :index
+    @com = Company.find(params[:company_id])
+    time1 = edit_time(params[:start]) || Time.mktime('1971')
+    time2 = edit_time(params[:end]) || Time.mktime('2020')
+    @items = @com.items.where(time: time1..time2)
+    render :index
   end
 
   def create
@@ -35,7 +36,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @com = Company.find(params[:id])
+    @com = Company.find(params[:company_id])
     @item = Item.find(params[:id])
   end
 
@@ -71,6 +72,8 @@ class ItemsController < ApplicationController
 
   def compare
     @com = Company.find(params[:company_id])
-    redirect_to company_items_path(current_user.company) unless current_user.company == @com
+    unless current_user.admin?
+      redirect_to company_items_path(current_user.company) unless current_user.company == @com
+    end
   end
 end

@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   resources :users
   resources :companies do
     resources :items, except: :show
-  end
-  resources :companies do
     resources :users, except: :show
   end
+  patch 'companies/:id/addgame', to: 'companies#creategame'
+  get 'companies/:id/newgame', to: 'companies#games'
   get 'companies/:company_id/users/:id/change', to:'users#change_coo'
   post 'companies/:company_id/search', to:'items#search'
   # The priority is based upon order of creation: first created -> highest priority.

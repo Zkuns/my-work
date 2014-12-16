@@ -34,7 +34,6 @@ class UsersController < ApplicationController
   def update
     @com = Company.find(params[:company_id])
     @user = User.find(params[:id])
-    
     if @user.update(user_params)
       flash[:success] = '修改成功'
       redirect_to company_users_path
@@ -46,7 +45,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.destroy(User.find(params[:id])) if params[:id]
-    redirect_to company_users_path
+    redirect_to company_users_path(current_user.company)
   end
 
   def change_coo

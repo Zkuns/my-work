@@ -26,9 +26,9 @@ table.table
       td
         =user.password
       td
-        =user.company_name
+        =user.company.name
       td data-url="users/#{user.id}/change"
-        button.btn.btn-default.change-coo = user.coo_type ? 'vip' : 'not vip'
+        button.btn.btn-default.change-coo = user.coo_type ? 'CPS' : 'CPA'
       td
         =user.admin? ? '是' : '不是'
       td

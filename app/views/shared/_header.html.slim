@@ -2,10 +2,10 @@ nav.navbar.navbar-default.navbar-fixed-top
   .container-fluid
     .navbar-header
     .collapse.navbar-collapse
-       -if current_user.admin?
-        ul.nav.navbar-nav
-          li
-            =link_to '合作公司管理' , companies_path
+       ul.nav.navbar-nav
+          -if current_user.admin?  
+            li
+              =link_to '合作公司管理' , companies_path
           li.welcome
             =link_to "欢迎#{current_user.name}", 'javascript:void(0);'
        ul.nav.navbar-nav.navbar-right
