@@ -45,18 +45,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-  group :development, :test do
-    # Use sqlite3 as the database for Active Record
-    gem 'sqlite3'
-    gem 'rspec-rails', '~> 3.0.0'
-    gem 'factory_girl_rails', '~> 4.4.1' 
-    gem 'faker'
-  end
+# Use sqlite3 as the database for Active Record
+gem 'sqlite3'
+gem 'rspec-rails', '~> 3.0.0'
+gem 'factory_girl_rails', '~> 4.4.1' 
+gem 'faker'
 
-  group :test do
-    
-  end
-group :production do
-  gem 'pg', '0.15.1'
-  gem 'rails_12factor', '0.0.2'
 end
