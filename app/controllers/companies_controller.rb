@@ -2,14 +2,15 @@ class CompaniesController < ApplicationController
   
   def creategame
     com = Company.find(params[:id])
-    games = com.coo_games || ''
+    str = com.coo_games.to_s
+    games = str || ''
     if games == ''
       games = games << com_params[:coo_games]
     else
       games = games << ',' + com_params[:coo_games]
     end
     com_params['coo_games'] = games
-    com.update(coo_games: games)
+    com.update(:coo_games => games+' ')
     redirect_to companies_path
   end
 

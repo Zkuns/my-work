@@ -7,7 +7,7 @@ $(document).on("page:change", function(){
       type: 'get',
       complete: function(xhr, data){
         if(xhr.status ==200 ){
-          $this.text((($this.text() == 'vip') ? 'CPS' : 'CPA'))
+          $this.text((($this.text() == 'CPA') ? 'CPS' : 'CPA'))
         }else{
           alert('请刷新重试');
         }

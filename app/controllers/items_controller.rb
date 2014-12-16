@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  skip_before_action :must_admin, only: :index
+  skip_before_action :must_admin, only: [:index, :search]
+  skip_before_action :must_login_in, only: :search
   before_action :compare
 
   def index
@@ -25,6 +26,7 @@ class ItemsController < ApplicationController
     time = item_params[:time].split('-')
     item_params[:time] = Time.new(time[0].to_s, time[1].to_s, time[2].to_s)
     @com = Company.find(params[:company_id])
+    puts item_params[:coo_game]
     @item = @com.items.new(item_params)
     if @item.save
       flash[:success] = '添加成功'
@@ -38,6 +40,7 @@ class ItemsController < ApplicationController
   def edit
     @com = Company.find(params[:company_id])
     @item = Item.find(params[:id])
+    @games = @com.coo_games.split(',')
   end
 
   def update
@@ -61,7 +64,7 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:time,:internumber,:usernumber,
                                 :yidong,:liantong,:dianxing,
-                                :signupnumber)
+                                :signupnumber,:coo_game)
   end
 
   def edit_time time

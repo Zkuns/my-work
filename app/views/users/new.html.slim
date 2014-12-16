@@ -31,8 +31,8 @@ div class='all-form'
       =f.label '合作模式:'
       |&nbsp;&nbsp;
       |CPS
-      =f.radio_button :coo_type,false
+      =f.radio_button :coo_type,true
       |&nbsp;&nbsp;
       |CPA
-      =f.radio_button :coo_type,true
+      =f.radio_button :coo_type,false
     =f.submit '添加', class:'btn btn-default'

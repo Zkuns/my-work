@@ -9,15 +9,11 @@ div class='all-form'
   =form_for @item, url: company_item_path(@com, @item) do |f|
     .form-group
       =f.label '时间'
-      =f.text_field :time, class: 'form-control datepicker', value: "#{@item.time}"
+      =f.text_field :time, class: 'form-control', id:'select', value: "#{@item.time.strftime("%Y-%m-%d")}"
     .form-group
-      =f.label '渠道号:'
-      =f.label @item.internumber
-      br
-      |c10001
-      =f.radio_button :internumber, 'c10001'
-      |c10002
-      =f.radio_button :internumber, 'c10002'
+      =f.label '游戏类型:'
+      =f.label @item.coo_game
+      =f.select :coo_game, @games, {},class: 'form-control'
     .form-group
       =f.label '注册用户数'
       =f.text_field :signupnumber, class: 'form-control', value: "#{@item.signupnumber}"

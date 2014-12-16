@@ -12,7 +12,7 @@ div class='all-form'
       =f.text_field :time, class: 'form-control', id: 'select'
     .form-group
       =f.label '选择游戏类型:'
-      =f.select :coo_game, @games
+      =f.select :coo_game, @games, {},class: 'form-control'
     .form-group
       =f.label '注册用户数'
       =f.text_field :signupnumber, class: 'form-control'
