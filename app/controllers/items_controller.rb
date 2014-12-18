@@ -5,13 +5,17 @@ class ItemsController < ApplicationController
 
   def index
     @com = Company.find(params[:company_id])
-    @items = @com.items
+    @items = @com.items.order(time: :desc)
   end
 
   def new
     @com = Company.find(params[:company_id])
     @item = @com.items.new
-    @games = @com.coo_games.split(',')
+    if @com.coo_games
+      @games = @com.coo_games.split(',')
+    else
+      @games = ''
+    end
   end
 
   def search
