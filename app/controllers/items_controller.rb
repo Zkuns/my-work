@@ -7,13 +7,17 @@ class ItemsController < ApplicationController
     @com = Company.find(params[:company_id])
     time1 = Time.now.beginning_of_month
     time2 = Time.now.end_of_month
-    @items = @com.items.where(time: time1..time2)    
+    @items = @com.items.where(time: time1..time2).order(time: :desc)
    end
 
   def new
     @com = Company.find(params[:company_id])
     @item = @com.items.new
-    @games = @com.coo_games.split(',')
+    if @com.coo_games
+      @games = @com.coo_games.split(',')
+    else
+      @games = ''
+    end
   end
 
   def search
@@ -25,7 +29,7 @@ class ItemsController < ApplicationController
       time1 = edit_time(params[:start]) || Time.mktime('1971')
       time2 = edit_time(params[:end]) || Time.mktime('2020')
     end
-    @items = @com.items.where(time: time1..time2)
+    @items = @com.items.where(time: time1..time2).order(time: :desc)
     render :index
   end
 
