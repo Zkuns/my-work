@@ -5,8 +5,10 @@ class ItemsController < ApplicationController
 
   def index
     @com = Company.find(params[:company_id])
-    @items = @com.items
-  end
+    time1 = Time.now.beginning_of_month
+    time2 = Time.now.end_of_month
+    @items = @com.items.where(time: time1..time2)    
+   end
 
   def new
     @com = Company.find(params[:company_id])
@@ -16,8 +18,13 @@ class ItemsController < ApplicationController
 
   def search
     @com = Company.find(params[:company_id])
-    time1 = edit_time(params[:start]) || Time.mktime('1971')
-    time2 = edit_time(params[:end]) || Time.mktime('2020')
+    if params[:month]
+      time1 = edit_time(params[:month])
+      time2 = edit_time(params[:month]).end_of_month
+    else
+      time1 = edit_time(params[:start]) || Time.mktime('1971')
+      time2 = edit_time(params[:end]) || Time.mktime('2020')
+    end
     @items = @com.items.where(time: time1..time2)
     render :index
   end

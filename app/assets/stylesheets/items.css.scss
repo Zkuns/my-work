@@ -3,10 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .range{
   width:400px;
+  display: inline-block;
 }
 ul.nav li.welcome a{
   color: rgb(35, 102, 245);
   &:hover,&:visited,&:link,&:active{
     color: rgb(35, 102, 245);
+  }
+}
+.month-picker{
+  display: inline-block;
+  margin-top: 0;
+}
+.rangeform{
+  position: relative;
+  .btn{
+    position: absolute; 
+    top: 20px;
   }
 }

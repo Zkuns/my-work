@@ -1,8 +1,10 @@
 =render 'shared/message'
-/ .month-picker
-/   |月份选择
-/   input#select-month type='text'
 =form_tag "/companies/#{@com.id}/search"
+  .month-picker
+    |月份选择
+    input#select-month type='text' name='month'
+  =submit_tag '查找', class: 'btn btn-default'
+=form_tag "/companies/#{@com.id}/search", class: 'rangeform'
   .range
     |按时间查找
     .input-daterange.input-group#range
@@ -12,7 +14,7 @@
         input.form-control type="text" name="end"
   =submit_tag '查找', class: 'btn btn-default'
 -if current_user.admin?
-  =link_to '添加', new_company_item_path
+  =link_to '添加', new_company_item_path, class: 'btn btn-default'
 table.table
   tr
     td
@@ -76,4 +78,4 @@ table.table
       td
         =@items.sum(:dianxing)
       td
-        =@items.sum(:yidong)+@items.sum(:liantong)+@items.sum(:dianxing)
+        =@items.sum(:yidong) + @items.sum(:liantong) + @items.sum(:dianxing)
