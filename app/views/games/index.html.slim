@@ -1,0 +1,13 @@
+=link_to '添加', new_company_game_path, class: 'btn btn-default'
+table.table
+  tr
+    td
+      |合作产品名称
+    td
+      |操作
+  -@games.each do |game|
+    tr
+      td
+        = game.name
+      td
+        =link_to '删除', company_game_path(@company, game), method: :delete, data: { confirm: 'Are you sure?' }

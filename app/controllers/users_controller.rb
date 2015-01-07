@@ -17,7 +17,6 @@ class UsersController < ApplicationController
       flash.now[:danger] = '两次密码输入不一致'
       render :new
     end
-    puts user_params[:coo_type]
     if @user.save
       flash[:success] = '添加成功'
       redirect_to company_users_path @com

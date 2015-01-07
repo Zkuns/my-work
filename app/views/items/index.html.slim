@@ -1,21 +1,26 @@
 =render 'shared/message'
 =form_tag "/companies/#{@com.id}/search"
+  / -@games.each do |game|
+  /   =link_to game.name , 'javascript: void(0)', class: 'btn btn-default'
+  /   |&nbsp;
+  =label_tag '选择游戏类型:'
+      =select_tag :coo_game, options_from_collection_for_select(@games, "name", "name"), class: 'form-control'
   .month-picker
     |月份选择
     input#select-month type='text' name='month'
-  =submit_tag '查找', class: 'btn btn-default'
-=form_tag "/companies/#{@com.id}/search", class: 'rangeform'
+  br
   .range
-    |按时间查找
+    |时间选择
     .input-daterange.input-group#range
         input.form-control type="text" name="start"
         span class="input-group-addon"
           |到
         input.form-control type="text" name="end"
+  br
   =submit_tag '查找', class: 'btn btn-default'
+h5 当月的数据:
 -if current_user.admin?
   =link_to '添加', new_company_item_path, class: 'btn btn-default'
-h5 当月的数据:
 table.table
   tr
     td
@@ -57,7 +62,7 @@ table.table
             = item.dianxing
           td
             = item.yidong+item.liantong+item.dianxing
-        -if current_user.admin
+        -if current_user.admin?
           td
             =link_to '修改', edit_company_item_path(@com, item)
             |&nbsp;

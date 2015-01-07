@@ -1,0 +1,8 @@
+div class='all-form'
+  = render 'shared/message'
+  = form_for @game , url: company_games_path do |f|
+    .form-group
+      = f.label '新加合作产品'
+      = f.text_field :name, value:'', class: 'form-control'
+    
+    = f.submit '添加', class:'btn btn-default'

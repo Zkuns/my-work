@@ -27,7 +27,7 @@ class CompaniesController < ApplicationController
 
   def games
     @com = Company.find(params[:id])
-    @games = @com.coo_games || ''
+    @games = @com.games || ''
   end
 
   def index

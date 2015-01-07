@@ -7,29 +7,36 @@ class ItemsController < ApplicationController
     @com = Company.find(params[:company_id])
     time1 = Time.now.beginning_of_month
     time2 = Time.now.end_of_month
-    @items = @com.items.where(time: time1..time2).order(time: :desc)
-   end
+    @items = @com.items.where(time: time1..time2).order(time: :desc, coo_game: :asc)
+    @games = @com.games
+  end
 
   def new
     @com = Company.find(params[:company_id])
     @item = @com.items.new
-    if @com.coo_games
-      @games = @com.coo_games.split(',')
-    else
-      @games = ''
-    end
+    @games = @com.games.map { |game| game.name}
   end
 
   def search
     @com = Company.find(params[:company_id])
-    if params[:month]
+    @games = @com.games.map
+    if !params[:month].blank?
       time1 = edit_time(params[:month])
-      time2 = edit_time(params[:month]).end_of_month
-    else
+      time2 = edit_time(params[:month]).end_of_month    
+    elsif params[:start] && params[:end]
       time1 = edit_time(params[:start]) || Time.mktime('1971')
       time2 = edit_time(params[:end]) || Time.mktime('2020')
+    else
+      time1 = Time.mktime('1971')
+      time2 = Time.mktime('2020')
     end
-    @items = @com.items.where(time: time1..time2).order(time: :desc)
+    @items = @com.items.where(time: time1..time2).order(time: :desc, coo_game: :asc)
+    @items = @items.where(coo_game: params[:coo_game]) 
+    puts @items.to_s
+    @items.each do |item|
+      puts item.to_s
+    end
+    puts '--------------------'
     render :index
   end
 
@@ -37,7 +44,6 @@ class ItemsController < ApplicationController
     time = item_params[:time].split('-')
     item_params[:time] = Time.new(time[0].to_s, time[1].to_s, time[2].to_s)
     @com = Company.find(params[:company_id])
-    puts item_params[:coo_game]
     @item = @com.items.new(item_params)
     if @item.save
       flash[:success] = '添加成功'
@@ -51,7 +57,7 @@ class ItemsController < ApplicationController
   def edit
     @com = Company.find(params[:company_id])
     @item = Item.find(params[:id])
-    @games = @com.coo_games.split(',')
+    @games = @com.games
   end
 
   def update

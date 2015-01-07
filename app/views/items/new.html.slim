@@ -5,7 +5,7 @@ div class='all-form'
       ul
        -@item.errors.full_messages.each do |msg|
          li
-          = msguxi
+          = msg
   =form_for @item, url: company_items_path(@com) do |f|
     .form-group
       =f.label '时间'

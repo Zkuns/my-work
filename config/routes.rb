@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :companies do
     resources :items, except: :show
     resources :users, except: :show
+    resources :games, except: :show
   end
   patch 'companies/:id/addgame', to: 'companies#creategame'
   get 'companies/:id/newgame', to: 'companies#games'
