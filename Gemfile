@@ -15,6 +15,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'slim'
 
 gem 'bootstrap-datepicker-rails'
+gem 'pry-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
