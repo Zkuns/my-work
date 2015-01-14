@@ -49,7 +49,7 @@ class ItemsController < ApplicationController
   def edit
     @com = Company.find(params[:company_id])
     @item = Item.find(params[:id])
-    @games = @com.games
+    @games = @com.games.map{ |game| game.name }
   end
 
   def update
