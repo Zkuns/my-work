@@ -18,6 +18,18 @@ div class='all-form'
       =f.radio_button :admin,true
       |否
       =f.radio_button :admin,false
+   
+    .form-group
+      =f.label '合作模式:'
+      |&nbsp;&nbsp;
+      |简易CPS
+      =f.radio_button :cooperate_type, '简易CPS'
+      |&nbsp;&nbsp;
+      |CPS
+      =f.radio_button :cooperate_type, 'CPS'
+      |&nbsp;&nbsp;
+      |CPA
+      =f.radio_button :cooperate_type, 'CPA'
 
     .form-group
       =f.label '姓名'

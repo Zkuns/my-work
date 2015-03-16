@@ -19,16 +19,19 @@ class ItemsController < ApplicationController
 
   def search
     @com = Company.find(params[:company_id])
-    @games = @com.games.map
+    @games = @com.games
     if !params[:start].blank? || !params[:end].blank?
       time1 = edit_time(params[:start]) || Time.mktime('1971')
       time2 = edit_time(params[:end]) || Time.mktime('2020')
+    elsif !params[:month].blank?
+      time1 = edit_time(params[:month])
+      time2 = edit_time(params[:month])+1.month
     else
-      time1 = edit_time(params[:month]) || Time.now.beginning_of_month
-      time2 = edit_time(params[:month]) || Time.now.end_of_month
+      time1 = Time.now.beginning_of_month
+      time2 = Time.now.end_of_month
     end
     @items = @com.items.where(time: time1..time2).order(time: :desc, coo_game: :asc)
-    @items = @items.where(coo_game: params[:coo_game]) 
+    @items = @items.where(coo_game: params[:coo_game]) if params[:coo_game] && !(params[:coo_game] == '全部产品')
     render :index
   end
 
@@ -80,7 +83,7 @@ class ItemsController < ApplicationController
     return nil if time.blank?
     time = time.split('-')
     return nil if time[0].nil?
-    time[2].nil?? Time.mktime(time[0], time[1]) : Time.mktime(time[0], time[1], time[2])
+    time[2].nil?? Time.mktime(time[0], time[1]) : Time.mktime(time[0], time[1], time[2].to_i + 1)
   end
 
   def compare

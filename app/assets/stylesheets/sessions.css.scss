@@ -2,9 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'bootstrap';
+.contaider{
+  width: 100%;
+}
 .sign-in {
   width: 400px;
-  margin: 0 auto;
-  padding-top: 100px;
-  box-sizing: border-box;
+  margin: 200px auto;
+  border-radius: 8px;
+  background: #368ee0;
+  .sign-header{
+    color: white;
+    height: 70px;
+    text-align: center;
+    background: #368ee0;
+    border-radius: 8px 8px 0 0;
+    h1{
+      padding: 14px;
+    }
+  }
+  .sign-body{
+    padding: 10px;
+    border: 1px solid #368ee0;
+    border-radius: 0 0 8px 8px;
+    background: white;
+  }
 }
+
+

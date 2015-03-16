@@ -3,25 +3,29 @@
   / -@games.each do |game|
   /   =link_to game.name , 'javascript: void(0)', class: 'btn btn-default'
   /   |&nbsp;
-  =label_tag '选择游戏类型:'
-      =select_tag :coo_game, options_from_collection_for_select(@games, "name", "name"), class: 'form-control'
-  .month-picker
-    |月份选择
-    input#select-month type='text' name='month'
-  br
-  .range
-    |时间选择
-    .input-daterange.input-group#range
-        input.form-control type="text" name="start"
-        span class="input-group-addon"
-          |到
-        input.form-control type="text" name="end"
-  br
-  =submit_tag '查找', class: 'btn btn-default'
+  .time-picker
+    |产品选择:&nbsp;
+    select.form-control.game-picker#coo_game name='coo_game'
+      option value='全部产品'
+        |全部产品
+      =@games.each do |game|
+        option value="#{game.name}"
+          =game.name
+    .month-picker
+      |&nbsp;&nbsp;月份选择:&nbsp;
+      input#select-month type='text' name='month'
+    |&nbsp;&nbsp;时间选择:&nbsp;
+    .range
+      .input-daterange.input-group#range
+          input.form-control type="text" name="start"
+          span class="input-group-addon"
+            |到
+          input.form-control type="text" name="end"
+    =submit_tag '查找', class: 'btn btn-default'
 h5 当月的数据:
 -if current_user.admin?
   =link_to '添加', new_company_item_path, class: 'btn btn-default'
-table.table
+table.table.table-striped
   tr
     td
       |日期
@@ -29,7 +33,7 @@ table.table
       |产品名称
     td
       |激活用户数
-    -if current_user.coo_type?
+    -if current_user.cooperate_type == 'CPS'
       td
         |有效用户数
       td
@@ -38,6 +42,7 @@ table.table
         |联通金额（元）
       td
         |电信金额（元）
+    -if current_user.cooperate_type == '简易CPS'||current_user.cooperate_type == 'CPS'
       td
         |金额（元）
     -if current_user.admin?
@@ -51,7 +56,7 @@ table.table
           = item.coo_game
         td
           = item.signupnumber
-        -if current_user.coo_type
+        -if current_user.cooperate_type == 'CPS'
           td
             = item.usernumber
           td
@@ -60,6 +65,7 @@ table.table
             = item.liantong
           td
             = item.dianxing
+        -if current_user.cooperate_type == '简易CPS'||current_user.cooperate_type == 'CPS'
           td
             = item.yidong+item.liantong+item.dianxing
         -if current_user.admin?
@@ -74,7 +80,7 @@ table.table
 
     td
       =@items.sum(:signupnumber)
-    -if current_user.coo_type
+    -if current_user.cooperate_type == 'CPS'
       td
         =@items.sum(:usernumber)
       td
@@ -83,5 +89,6 @@ table.table
         =@items.sum(:liantong)
       td
         =@items.sum(:dianxing)
+    -if current_user.cooperate_type == '简易CPS'||current_user.cooperate_type == 'CPS'
       td
         =@items.sum(:yidong) + @items.sum(:liantong) + @items.sum(:dianxing)

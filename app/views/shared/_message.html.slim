@@ -2,3 +2,7 @@
   -flash.each do |key, value|
     div class="alert alert-#{key}"
       = value
+  javascript:
+    setTimeout(function(){
+      $('.alert').slideUp();
+    }, 2000)

@@ -36,6 +36,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success] = '修改成功'
+      binding.pry
       redirect_to company_users_path
     else
       flash.now[:danger] = '修改失败,请重试'
@@ -57,7 +58,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:company_name, :name, :coo_type, :username, :password, :admin)
+    params.require(:user).permit(:company_name, :name, :coo_type, :username, :password, :admin, :cooperate_type)
   end
 
 end

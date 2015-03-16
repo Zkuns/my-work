@@ -30,9 +30,12 @@ div class='all-form'
     .form-group
       =f.label '合作模式:'
       |&nbsp;&nbsp;
+      |简易CPS
+      =f.radio_button :cooperate_type, '简易CPS'
+      |&nbsp;&nbsp;
       |CPS
-      =f.radio_button :coo_type,true
+      =f.radio_button :cooperate_type, 'CPS'
       |&nbsp;&nbsp;
       |CPA
-      =f.radio_button :coo_type,false
+      =f.radio_button :cooperate_type, 'CPA'
     =f.submit '添加', class:'btn btn-default'

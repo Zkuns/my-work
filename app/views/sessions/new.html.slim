@@ -1,11 +1,16 @@
-div class='sign-in'
-  = render 'shared/message'
-  = form_for @user, url: sessions_path do |f|
-    .form-group
-      = f.label '帐号'
-      = f.text_field :username, class: 'form-control'
-    .form-group
-      = f.label '密码'
-      = f.password_field :password, class: 'form-control'
-    
-    = f.submit '登陆', class:'btn btn-default'
+.contaider
+  .sign-in
+    .sign-header
+      h1
+        |user login 
+    .sign-body
+      = render 'shared/message'
+      = form_for @user, url: sessions_path do |f|
+        .form-group
+          = f.label '帐号'
+          = f.text_field :username, class: 'form-control'
+        .form-group
+          = f.label '密码'
+          = f.password_field :password, class: 'form-control'
+        
+        = f.submit '登陆', class:'btn btn-primary'

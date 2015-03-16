@@ -1,8 +1,26 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+select.game-picker{
+  margin-top: 0px;
+  padding-top: 0px;
+  display: inline-block;
+  max-width: 200px;
+}
+.month-picker{
+  display: inline-block;
+  margin-top: 3px;
+}
+input#select-month{
+  width: 178px;
+  height: 36px;
+  border-radius: 3px;
+  box-shadow: none;
+  border: 1px solid #cccccc;
+}
 .range{
-  width:400px;
+  width: 400px;
+  height: 20px;
   display: inline-block;
 }
 ul.nav li.welcome a{
@@ -11,10 +29,7 @@ ul.nav li.welcome a{
     color: rgb(35, 102, 245);
   }
 }
-.month-picker{
-  display: inline-block;
-  margin-top: 0;
-}
 .btn{
-  display: inline-block;;
+  display: inline-block;
+  margin-left: 8px;
 }
