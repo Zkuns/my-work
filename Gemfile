@@ -50,6 +50,3 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'debugger', group: [:development, :test]
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-gem 'rspec-rails', '~> 3.0.0'
-gem 'factory_girl_rails', '~> 4.4.1' 
-gem 'faker'
