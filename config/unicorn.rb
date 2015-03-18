@@ -1,4 +1,4 @@
-root = '/root/datemanager/my-work'
+root = '/home/zhukun/www/my-work'
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
