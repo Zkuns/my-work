@@ -4,7 +4,7 @@ pid "#{root}/tmp/pids/unicorn.pid"
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
 timeout 15
 preload_app true
-listen 80, :tcp_nopush => true
+listen 3000, :tcp_nopush => true
 
 stderr_path root + "/log/unicorn.stderr.log"
 stdout_path root + "/log/unicorn.stdout.log"
