@@ -6,8 +6,8 @@ timeout 15
 preload_app true
 listen 8080, :tcp_nopush => true
 
-stderr_path APP_PATH + "/log/unicorn.stderr.log"
-stdout_path APP_PATH + "/log/unicorn.stdout.log"
+stderr_path root + "/log/unicorn.stderr.log"
+stdout_path root + "/log/unicorn.stdout.log"
 
 before_fork do |server, worker|
   Signal.trap 'TERM' do
