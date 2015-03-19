@@ -16,3 +16,7 @@
 /tmp
 *.DS_Store
 .DS_Store
+/config/unicorn.rb
+/config/secrets.yml
+/config/database.yml
+Gemfile.lock
