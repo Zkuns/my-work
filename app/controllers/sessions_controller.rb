@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :must_login_in, only: [:new, :create]
+  skip_before_action :must_login_in, only: [:new, :create, :admin_new, :admin_create]
   skip_before_action :must_admin
   before_action :must_not_login_in, only: [:new, :create]
   
