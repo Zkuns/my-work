@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :sessions, except: [:show, :edit, :update]
   root 'sessions#new'
+  get 'admin', to: 'sessions#admin_new'
+  post 'sessions/admin_create', to: 'sessions#admin_create'
   #resources :items, except: :show
   resources :users
   resources :companies do
